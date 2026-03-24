@@ -1,0 +1,20 @@
+{
+  "name": "kings-court-game",
+  "version": "1.0.0",
+  "description": "Frontend for King's Court game",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.2",
+    "firebase": "^12.11.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-router-dom": "^7.13.0",
+    "vite": "^7.3.1"
+  }
+}

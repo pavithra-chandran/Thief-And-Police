@@ -1,0 +1,1027 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  --emerald-dark: #0d4d3d;
+  --emerald-primary: #158467;
+  --emerald-light: #1fa57a;
+  --treasure-gold: #ffd700;
+  --antique-brass: #b8860b;
+  --cream: #fff8dc;
+  --dark-bg: #0a1612;
+  --card-bg: rgba(13, 77, 61, 0.3);
+  --gold-glow: rgba(255, 215, 0, 0.3);
+  --emerald-glow: rgba(21, 132, 103, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #0a1612 0%, #0d4d3d 50%, #1a5c4a 100%);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 30% 20%, rgba(255, 215, 0, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 70% 80%, rgba(21, 132, 103, 0.1) 0%, transparent 50%),
+    repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(255, 215, 0, 0.02) 100px, rgba(255, 215, 0, 0.02) 101px);
+}
+
+.coinFloat {
+  position: absolute;
+  font-size: 2.5rem;
+  opacity: 0.15;
+  animation: floatCoin 8s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px var(--gold-glow));
+}
+
+@keyframes floatCoin {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+    opacity: 0.15;
+  }
+  50% { 
+    transform: translateY(-30px) rotate(180deg); 
+    opacity: 0.25;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: headerEntrance 1s ease-out;
+  z-index: 1;
+}
+
+@keyframes headerEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.headerDecoration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.decorSymbol {
+  font-size: 1rem;
+  color: var(--treasure-gold);
+  animation: symbolSparkle 3s ease-in-out infinite;
+}
+
+.decorSymbol:first-child {
+  animation-delay: 0.5s;
+}
+
+@keyframes symbolSparkle {
+  0%, 100% { 
+    opacity: 0.5; 
+    transform: scale(1) rotate(0deg);
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.2) rotate(45deg);
+  }
+}
+
+.decorLine {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--treasure-gold), transparent);
+  animation: lineGlow 2s ease-in-out infinite;
+}
+
+@keyframes lineGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; box-shadow: 0 0 10px var(--gold-glow); }
+}
+
+.title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  font-weight: 700;
+  color: var(--treasure-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-shadow: 
+    0 0 20px var(--gold-glow),
+    0 0 40px var(--gold-glow),
+    2px 2px 4px rgba(0, 0, 0, 0.8);
+  animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% { 
+    text-shadow: 
+      0 0 20px var(--gold-glow),
+      0 0 40px var(--gold-glow),
+      2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  50% { 
+    text-shadow: 
+      0 0 30px var(--gold-glow),
+      0 0 60px var(--gold-glow),
+      0 0 80px rgba(255, 215, 0, 0.2),
+      2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+}
+
+.titleIcon {
+  font-size: 0.7em;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+.titleIcon:first-child {
+  animation-delay: 0.3s;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+.subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  color: var(--cream);
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  z-index: 1;
+}
+
+.scoresSection,
+.exchangeSection {
+  background: linear-gradient(145deg, rgba(13, 77, 61, 0.4), rgba(13, 77, 61, 0.2));
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 
+    0 10px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 80px rgba(21, 132, 103, 0.1);
+  animation: sectionSlideUp 0.8s ease-out backwards;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes sectionSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scoresSection {
+  animation-delay: 0.2s;
+}
+
+.exchangeSection {
+  animation-delay: 0.4s;
+}
+
+.scoresSection::before,
+.exchangeSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.sectionTitle {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--treasure-gold);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-shadow: 0 2px 10px var(--gold-glow);
+}
+
+.sectionIcon {
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 10px var(--gold-glow));
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.sortButtons {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.3rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.sortBtn {
+  padding: 0.6rem 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--cream);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sortBtn:hover {
+  background: rgba(255, 215, 0, 0.1);
+  color: var(--treasure-gold);
+}
+
+.sortBtn.active {
+  background: linear-gradient(135deg, var(--treasure-gold), var(--antique-brass));
+  color: var(--dark-bg);
+  box-shadow: 0 4px 15px var(--gold-glow);
+  font-weight: 700;
+}
+
+.scoresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.scoreCard {
+  background: linear-gradient(145deg, rgba(21, 132, 103, 0.3), rgba(13, 77, 61, 0.2));
+  border: 2px solid rgba(255, 215, 0, 0.15);
+  border-radius: 16px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: cardFadeIn 0.6s ease-out backwards;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.scoreCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.scoreCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 215, 0, 0.4);
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px var(--gold-glow);
+}
+
+.scoreCard:hover::before {
+  opacity: 1;
+}
+
+.highlightCard {
+  background: linear-gradient(145deg, rgba(255, 215, 0, 0.2), rgba(184, 134, 11, 0.15));
+  border-color: var(--treasure-gold);
+  box-shadow: 0 8px 30px var(--gold-glow);
+}
+
+.highlightCard::after {
+  content: '⭐';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  animation: starTwinkle 2s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.6; transform: rotate(0deg) scale(1); }
+  50% { opacity: 1; transform: rotate(15deg) scale(1.2); }
+}
+
+.rankBadge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--treasure-gold), var(--antique-brass));
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0 20px var(--gold-glow);
+  border: 3px solid var(--dark-bg);
+  animation: badgePop 0.5s ease-out 0.3s backwards;
+}
+
+@keyframes badgePop {
+  0% { transform: scale(0) rotate(-180deg); }
+  70% { transform: scale(1.1) rotate(10deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.rankNumber {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--dark-bg);
+  line-height: 1;
+}
+
+.rankSuffix {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--dark-bg);
+  text-transform: uppercase;
+}
+
+.scoreInfo {
+  margin-bottom: 1rem;
+}
+
+.playerName {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(1.3rem, 3vw, 1.6rem);
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.pointsDisplay {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.pointsNumber {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--treasure-gold);
+  text-shadow: 0 0 15px var(--gold-glow);
+}
+
+.pointsLabel {
+  font-size: 1rem;
+  color: var(--cream);
+  opacity: 0.8;
+}
+
+.trendIcon {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-left: auto;
+  animation: trendBounce 1.5s ease-in-out infinite;
+}
+
+.trendIcon.up {
+  color: #4ade80;
+  filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.5));
+}
+
+.trendIcon.down {
+  color: #f87171;
+  filter: drop-shadow(0 0 10px rgba(248, 113, 113, 0.5));
+}
+
+.trendIcon.stable {
+  color: var(--cream);
+  opacity: 0.6;
+}
+
+@keyframes trendBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--emerald-light), var(--treasure-gold));
+  border-radius: 10px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px var(--gold-glow);
+  animation: progressShine 2s ease-in-out infinite;
+  position: relative;
+}
+
+@keyframes progressShine {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.3); }
+  100% { filter: brightness(1); }
+}
+
+.exchangeDescription {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--cream);
+  text-align: center;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.exchangeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.exchangeBtn {
+  background: linear-gradient(145deg, rgba(255, 215, 0, 0.15), rgba(184, 134, 11, 0.1));
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  animation: exchangeBtnSlide 0.6s ease-out backwards;
+}
+
+@keyframes exchangeBtnSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.exchangeBtn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  border-radius: 50%;
+}
+
+.exchangeBtn:hover:not(:disabled)::before {
+  width: 500px;
+  height: 500px;
+}
+
+.exchangeBtn:hover:not(:disabled) {
+  transform: translateX(5px);
+  border-color: var(--treasure-gold);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.3),
+    -5px 0 20px var(--gold-glow);
+}
+
+.exchangeBtn:active:not(:disabled) {
+  transform: translateX(2px);
+}
+
+.exchangeBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.exchangeBtn.exchanging {
+  animation: exchangePulse 1s ease-in-out infinite;
+  border-color: var(--treasure-gold);
+}
+
+@keyframes exchangePulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px var(--gold-glow);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px var(--gold-glow);
+    transform: scale(1.02);
+  }
+}
+
+.exchangeBtn.complete {
+  background: linear-gradient(145deg, rgba(74, 222, 128, 0.3), rgba(34, 197, 94, 0.2));
+  border-color: #4ade80;
+  animation: completeFlash 0.5s ease-out;
+}
+
+@keyframes completeFlash {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.exchangeIcon {
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(184, 134, 11, 0.2));
+  border-radius: 50%;
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.exchangeBtn:hover:not(:disabled) .exchangeIcon {
+  transform: rotate(15deg) scale(1.1);
+  border-color: var(--treasure-gold);
+}
+
+.exchangeInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: left;
+}
+
+.exchangePlayer {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.exchangePoints {
+  font-size: 0.9rem;
+  color: var(--treasure-gold);
+  font-weight: 600;
+}
+
+.exchangeArrow {
+  font-size: 1.5rem;
+  color: var(--treasure-gold);
+  transition: transform 0.3s ease;
+}
+
+.exchangeBtn:hover:not(:disabled) .exchangeArrow {
+  transform: translateX(5px);
+}
+
+.exchangeStatus {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(184, 134, 11, 0.05));
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 16px;
+  animation: statusSlideDown 0.5s ease-out;
+}
+
+@keyframes statusSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.statusText {
+  font-size: 1.1rem;
+  color: var(--cream);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.statusIcon {
+  font-size: 1.5rem;
+  animation: statusIconSpin 2s linear infinite;
+}
+
+@keyframes statusIconSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.treasuryFooter {
+  margin-top: 3rem;
+  z-index: 1;
+}
+
+.footerOrn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0.6;
+}
+
+.footerGem,
+.footerCoin {
+  font-size: 1.2rem;
+  color: var(--treasure-gold);
+  animation: footerSparkle 3s ease-in-out infinite;
+}
+
+.footerGem:last-child {
+  animation-delay: 1s;
+}
+
+.footerCoin {
+  animation-delay: 0.5s;
+}
+
+@keyframes footerSparkle {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.footerLine {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--treasure-gold), transparent);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .scoresGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .exchangeGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .content {
+    gap: 2rem;
+  }
+
+  .scoresSection,
+  .exchangeSection {
+    padding: 1.5rem;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .scoresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sortButtons {
+    width: 100%;
+  }
+
+  .sortBtn {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .scoresSection,
+  .exchangeSection {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .decorLine {
+    width: 50px;
+  }
+
+  .rankBadge {
+    width: 50px;
+    height: 50px;
+  }
+
+  .rankNumber {
+    font-size: 1.4rem;
+  }
+
+  .pointsNumber {
+    font-size: 1.6rem;
+  }
+
+  .exchangeBtn {
+    padding: 1.25rem;
+  }
+
+  .exchangeIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .footerLine {
+    width: 40px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles */
+button:focus-visible {
+  outline: 3px solid var(--treasure-gold);
+  outline-offset: 3px;
+}
+
+.scoreCard:focus-within {
+  outline: 2px solid rgba(255, 215, 0, 0.5);
+  outline-offset: 3px;
+}
+
+/* Win Banner */
+.winBanner {
+  width: 100%;
+  max-width: 700px;
+  background: linear-gradient(145deg, rgba(255, 215, 0, 0.18), rgba(184, 134, 11, 0.12));
+  border: 2px solid var(--treasure-gold);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  z-index: 1;
+  box-shadow: 0 0 60px rgba(255, 215, 0, 0.25), 0 10px 40px rgba(0, 0, 0, 0.4);
+  animation: bannerDrop 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bannerDrop {
+  from { opacity: 0; transform: translateY(-40px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.winBannerIcon {
+  font-size: 4rem;
+  margin-bottom: 0.75rem;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.7));
+  animation: trophyBounce 2s ease-in-out infinite;
+}
+
+@keyframes trophyBounce {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50%       { transform: translateY(-10px) rotate(5deg); }
+}
+
+.winBannerTitle {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: var(--treasure-gold);
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.winBannerReason {
+  font-size: 1.05rem;
+  color: var(--cream);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  opacity: 0.9;
+}
+
+.winBannerScore {
+  font-size: 1.15rem;
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+
+.winBannerScore span {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--treasure-gold);
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.winBannerWait {
+  font-size: 1rem;
+  color: var(--cream);
+  opacity: 0.75;
+  font-style: italic;
+}
+
+/* Role label under player name */
+.roleLabel {
+  font-size: 0.85rem;
+  color: var(--treasure-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+  margin-bottom: 0.4rem;
+}
+
+/* Finished / waiting badge on score card */
+.finishedBadge {
+  font-size: 1.4rem;
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+}
+
+.winBannerFound {
+  font-size: 1.2rem;
+  color: var(--cream);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.winBannerFound span {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--treasure-gold);
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.winBannerConsolation {
+  font-size: 1.15rem;
+  color: #86efac;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+}
+
+.endButtons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+  z-index: 1;
+}
+
+.homeBtn,
+.restartBtn {
+  padding: 0.85rem 2.2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.04em;
+}
+
+.homeBtn {
+  background: linear-gradient(135deg, #1fa57a, #0d4d3d);
+  color: var(--cream);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(21, 132, 103, 0.4);
+}
+
+.restartBtn {
+  background: linear-gradient(135deg, var(--treasure-gold), var(--antique-brass));
+  color: var(--dark-bg);
+  box-shadow: 0 4px 20px var(--gold-glow);
+}
+
+.homeBtn:hover,
+.restartBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.roundBadge {
+  z-index: 1;
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 1.4rem;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(184, 134, 11, 0.15));
+  border: 1.5px solid rgba(255, 215, 0, 0.5);
+  border-radius: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffd700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
